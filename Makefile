@@ -5,10 +5,11 @@ CROSS_COMPILER ?= /export/filer/shared/tools/arm-sdk3.3-sft/bin/arm-mv5sft-linux
 KSRC ?= /export/local/users/haimd/projects/linux_kw2/linux-2.6.32.11-lsp-3.1.0-tdm-zarlink-fiq/
 INSTALL_PATH ?= /lib/modules/`uname -r`/kernel/net
 EXTRA_CFLAGS += -Inet/8021q/ -Inet/bridge
+ARCH ?= arm
 #EXTRA_CFLAGS += -DDEBUG
 
 all:
-	make -C $(KSRC) ARCH=arm SUBDIRS=`pwd` CROSS_COMPILE=$(CROSS_COMPILER) modules
+	make -C $(KSRC) ARCH=$(ARCH) SUBDIRS=`pwd` CROSS_COMPILE=$(CROSS_COMPILER) modules
 
 .PHONY: clean
 
